@@ -1,9 +1,12 @@
 import { StyleSheet } from "react-native";
 
+import { THEME } from "./constants/theme";
+
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: THEME.colors.primary,
+    fontFamily: "Poppins-Black",
     alignItems: "center",
     justifyContent: "center",
   },
