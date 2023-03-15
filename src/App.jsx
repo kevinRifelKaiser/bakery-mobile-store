@@ -1,6 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import { useFonts } from "expo-font";
 import { Text, View, ActivityIndicator } from "react-native";
+import { Home } from "./screens";
 
 import { styles } from "./styles";
 import { THEME } from "./constants/theme";
@@ -16,12 +17,7 @@ const App = () => {
     );
   }
 
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+  return <Home />;
 };
 
 export default App;
