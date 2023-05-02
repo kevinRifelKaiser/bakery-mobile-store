@@ -8,4 +8,9 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: THEME.colors.primary,
   },
+  title: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginVertical: 20,
+  },
 });

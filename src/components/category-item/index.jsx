@@ -2,7 +2,7 @@ import { View, TouchableOpacity, Text } from "react-native";
 
 import { styles } from "./style";
 
-const SupermarketItem = ({ item, onSelected }) => {
+const CategoryItem = ({ item, onSelected }) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity
@@ -14,4 +14,4 @@ const SupermarketItem = ({ item, onSelected }) => {
   );
 };
 
-export default SupermarketItem;
+export default CategoryItem;

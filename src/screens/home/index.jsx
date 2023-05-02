@@ -1,22 +1,22 @@
 import { View, Text, FlatList } from "react-native";
-import { SupermarketItem } from "../../components/index";
+import { CategoryItem } from "../../components/index";
 
 import { styles } from "./styles.js";
-import { SUPERMARKETS } from "../../constants/data/supermarkets.js";
+import { CATEGORIES } from "../../constants/data/categories.js";
 
 const Home = () => {
   onSelected = () => null;
 
   renderItem = ({ item }) => (
-    <SupermarketItem item={item} onSelected={onSelected} />
+    <CategoryItem item={item} onSelected={onSelected} />
   );
   keyExtractor = (item) => item.id;
 
   return (
     <View style={styles.container}>
-      <Text>Home page</Text>
+      <Text style={styles.title}>Home page</Text>
       <FlatList
-        data={SUPERMARKETS}
+        data={CATEGORIES}
         renderItem={renderItem}
         keyExtractor={keyExtractor}
       />

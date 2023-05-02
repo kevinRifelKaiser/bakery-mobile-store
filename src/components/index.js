@@ -1,1 +1,1 @@
-export { default as SupermarketItem } from "./supermarket-item";
+export { default as CategoryItem } from "./category-item";
