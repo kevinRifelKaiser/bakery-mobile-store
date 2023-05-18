@@ -1,82 +1,26 @@
-import {
-  View,
-  Text,
-  FlatList,
-  TouchableOpacity,
-  TextInput,
-} from "react-native";
-import { useState } from "react";
+import { View, Text, Button, FlatList } from "react-native";
 
 import { styles } from "./styles";
 import { THEME } from "../../constants/theme";
-import { Ionicons } from "@expo/vector-icons";
+import { PRODUCTS } from "../../constants/data/products";
 
 import { ProductItem } from "../../components";
 
-const Products = ({ item, onSelected }) => {
-  const itemData = item;
-  const [newProduct, setNewProduct] = useState("");
-  const [productsList, setProducts] = useState([]);
-
-  const onHandleNewProduct = () => {
-    setProducts((prevState) => [
-      ...prevState,
-      { id: Math.random().toString(), title: newProduct },
-    ]);
-    setNewProduct("");
-  };
-
-  const onDelete = (id) => {
-    setProducts(productsList.filter((item) => item.id !== id));
-  };
-
-  const renderItem = ({ item }) => (
-    <ProductItem item={item} onDelete={onDelete} />
+const Products = ({ navigation }) => {
+  renderItem = ({ item }) => (
+    <ProductItem item={item} onSelected={() => null} />
   );
 
-  const keyExtractor = (item) => item.id;
-
-  const ProductsList = () => {
-    return productsList.length === 0 ? (
-      <View style={styles.defaultTextContainer}>
-        <Text style={styles.defaultTextTitle}>
-          This page is still in production, we are working on it
-        </Text>
-        <Text style={styles.defaultText}>
-          But if you want you can add some items to see how it will looks
-        </Text>
-      </View>
-    ) : (
-      <FlatList
-        data={productsList}
-        renderItem={renderItem}
-        keyExtractor={keyExtractor}
-      />
-    );
-  };
+  keyExtractor = (item) => item.id;
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.buttonContainer} onPress={onSelected}>
-        <Text>Go back</Text>
-      </TouchableOpacity>
-      <View>
-        <Text style={styles.title}>{itemData.title}</Text>
-      </View>
-      <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.input}
-          placeholder="Enter a new product"
-          onChangeText={setNewProduct}
-          value={newProduct}
-        />
-        <TouchableOpacity
-          style={styles.inputButton}
-          onPress={onHandleNewProduct}>
-          <Ionicons name="add-circle-outline" size={24} color="black" />
-        </TouchableOpacity>
-      </View>
-      <ProductsList />
+      <Text style={styles.title}>Products</Text>
+      <FlatList
+        data={PRODUCTS}
+        renderItem={renderItem}
+        keyExtractor={keyExtractor}
+      />
     </View>
   );
 };

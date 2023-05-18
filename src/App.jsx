@@ -1,7 +1,7 @@
-import { StatusBar } from "expo-status-bar";
 import { useFonts } from "expo-font";
-import { Text, View, ActivityIndicator } from "react-native";
+import { ActivityIndicator } from "react-native";
 import { Home } from "./screens";
+import AppNavigatior from "./navigation";
 
 import { styles } from "./styles";
 import { THEME } from "./constants/theme";
@@ -17,7 +17,7 @@ const App = () => {
     );
   }
 
-  return <Home />;
+  return <AppNavigatior />;
 };
 
 export default App;

@@ -13,4 +13,22 @@ export const styles = StyleSheet.create({
     fontWeight: "bold",
     marginVertical: 20,
   },
+  subTitle: {
+    fontSize: 16,
+    marginVertical: 20,
+  },
+  buttonContainer: {
+    width: "80%",
+    height: 70,
+    borderRadius: 7,
+    marginTop: 200,
+    padding: 20,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: THEME.colors.secondary,
+  },
+  buttonText: {
+    fontSize: 18,
+    fontWeight: "bold",
+  },
 });
