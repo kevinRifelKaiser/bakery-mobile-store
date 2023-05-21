@@ -1,14 +1,12 @@
 import { useFonts } from "expo-font";
 import { ActivityIndicator } from "react-native";
-import { Home } from "./screens";
-import AppNavigatior from "./navigation";
+import AppNavigatior from "./src/navigation";
 
-import { styles } from "./styles";
-import { THEME } from "./constants/theme";
+import { THEME } from "./src/constants/theme";
 
 const App = () => {
   const [loaded] = useFonts({
-    "Poppins-Black": require("../assets/fonts/Poppins-Black.ttf"),
+    "Poppins-Black": require("./assets/fonts/Poppins-Black.ttf"),
   });
 
   if (!loaded) {

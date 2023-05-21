@@ -10,12 +10,13 @@ export const styles = StyleSheet.create({
   },
   title: {
     fontSize: 20,
-    fontWeight: "bold",
     marginVertical: 20,
+    fontFamily: "Poppins-Black",
   },
   subTitle: {
     fontSize: 16,
     marginVertical: 20,
+    fontFamily: "Poppins-Black",
   },
   buttonContainer: {
     width: "80%",
@@ -26,9 +27,17 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: THEME.colors.secondary,
+    shadowColor: "#000000",
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.19,
+    shadowRadius: 5.62,
+    elevation: 6,
   },
   buttonText: {
     fontSize: 18,
-    fontWeight: "bold",
+    fontFamily: "Poppins-Black",
   },
 });

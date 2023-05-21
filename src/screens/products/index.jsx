@@ -7,15 +7,20 @@ import { PRODUCTS } from "../../constants/data/products";
 import { ProductItem } from "../../components";
 
 const Products = ({ navigation }) => {
+  const onSelected = (item) => {
+    navigation.navigate("ProductDetail", {
+      title: item.title,
+    });
+  };
+
   renderItem = ({ item }) => (
-    <ProductItem item={item} onSelected={() => null} />
+    <ProductItem item={item} onSelected={onSelected} />
   );
 
   keyExtractor = (item) => item.id;
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Products</Text>
       <FlatList
         data={PRODUCTS}
         renderItem={renderItem}

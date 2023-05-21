@@ -1,6 +1,4 @@
 import { View, Text, TouchableOpacity } from "react-native";
-import { Products } from "../index.js";
-import { CategoryItem } from "../../components/index";
 
 import { styles } from "./styles.js";
 
