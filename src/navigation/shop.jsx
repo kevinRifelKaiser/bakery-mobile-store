@@ -2,7 +2,6 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Home, Products, ProductDetail } from "../screens";
 
 import { THEME } from "../constants/theme";
-import { ThemeContext } from "@react-native-material/core";
 
 const ShopNavigator = () => {
   const Stack = createNativeStackNavigator();
