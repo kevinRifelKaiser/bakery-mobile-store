@@ -1,6 +1,8 @@
 import { View, Text, TouchableOpacity } from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
 
 import { styles } from "./styles.js";
+import { THEME } from "../../constants/theme/index.js";
 
 const Home = ({ navigation }) => {
   return (
@@ -10,7 +12,7 @@ const Home = ({ navigation }) => {
       <TouchableOpacity
         style={styles.buttonContainer}
         onPress={() => navigation.navigate("Products")}>
-        <Text style={styles.buttonText}>Go Shopping!</Text>
+        <Text style={styles.buttonText}>Go shopping</Text>
       </TouchableOpacity>
     </View>
   );

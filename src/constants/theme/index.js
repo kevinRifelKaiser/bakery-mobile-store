@@ -1,11 +1,13 @@
 export const THEME = {
   colors: {
-    black: "#000",
-    white: "#fff",
-    primary: "#bceae6",
-    secondary: "#fed1a5",
-    aditionalOne: "#cc5075",
-    aditionalTwo: "#00383e",
-    aditionalThree: "#091b48",
+    black: "#252525",
+    background: "#FDFBF8",
+    primary: "#8C674A",
+    secondary: "#5C4033",
+    tertiary: "#D8C3A5",
+    aditionalOne: "#CFA43B",
+    aditionalTwo: "#6E653F",
+    homePageOne: "#a4cfd4",
+    homePageTwo: "#23393a",
   },
 };

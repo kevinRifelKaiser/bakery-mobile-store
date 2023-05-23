@@ -5,6 +5,7 @@ const Favorites = () => {
   return (
     <View style={styles.container}>
       <Text>Favorites Page</Text>
+      <Text>this page is still in construction</Text>
     </View>
   );
 };

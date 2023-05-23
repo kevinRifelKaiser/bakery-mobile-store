@@ -6,17 +6,21 @@ export const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: THEME.colors.primary,
+    backgroundColor: THEME.colors.background,
   },
   title: {
-    fontSize: 20,
+    fontSize: 70,
     marginVertical: 20,
-    fontFamily: "Poppins-Black",
+    width: "80%",
+    fontFamily: "Title-Font",
+    color: THEME.colors.secondary,
   },
   subTitle: {
-    fontSize: 16,
+    fontSize: 18,
+    width: "80%",
+    color: THEME.colors.secondary,
     marginVertical: 20,
-    fontFamily: "Poppins-Black",
+    fontFamily: "Body-Font",
   },
   buttonContainer: {
     width: "80%",
@@ -26,7 +30,7 @@ export const styles = StyleSheet.create({
     padding: 20,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: THEME.colors.secondary,
+    backgroundColor: THEME.colors.primary,
     shadowColor: "#000000",
     shadowOffset: {
       width: 0,
@@ -37,7 +41,8 @@ export const styles = StyleSheet.create({
     elevation: 6,
   },
   buttonText: {
-    fontSize: 18,
-    fontFamily: "Poppins-Black",
+    fontSize: 20,
+    color: THEME.colors.black,
+    fontFamily: "Body-Font",
   },
 });

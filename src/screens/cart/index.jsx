@@ -5,6 +5,7 @@ const Cart = () => {
   return (
     <View style={styles.container}>
       <Text>Cart Page</Text>
+      <Text>this page is still in construction</Text>
     </View>
   );
 };
