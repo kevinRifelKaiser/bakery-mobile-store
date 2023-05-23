@@ -1,6 +1,7 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import { Favorites } from "../screens";
+import { THEME } from "../constants/theme";
 
 const FavoritesNavigator = () => {
   const Stack = createNativeStackNavigator();
@@ -10,7 +11,12 @@ const FavoritesNavigator = () => {
       <Stack.Screen
         name="Favorites"
         component={Favorites}
-        options={{ headerTitleAlign: "center" }}
+        options={{
+          headerTitleAlign: "center",
+          headerStyle: {
+            backgroundColor: THEME.colors.primary,
+          },
+        }}
       />
     </Stack.Navigator>
   );

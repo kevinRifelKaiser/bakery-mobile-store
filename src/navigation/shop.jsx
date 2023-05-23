@@ -21,10 +21,7 @@ const ShopNavigator = () => {
         options={{
           headerTitleAlign: "center",
           headerStyle: {
-            backgroundColor: "THEME.colors.primary",
-          },
-          tabBarHeaderStyle: {
-            backgroundColor: "red",
+            backgroundColor: THEME.colors.primary,
           },
         }}
       />
