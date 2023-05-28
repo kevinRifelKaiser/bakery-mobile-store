@@ -23,6 +23,12 @@ const ShopNavigator = () => {
           headerStyle: {
             backgroundColor: THEME.colors.primary,
           },
+          headerTitleStyle: {
+            fontSize: 25,
+            color: THEME.colors.tertiary,
+            fontFamily: "Body-Font",
+            fontWeight: "bold",
+          },
         }}
       />
       <Stack.Screen
@@ -30,8 +36,15 @@ const ShopNavigator = () => {
         component={ProductDetail}
         options={{
           headerTitleAlign: "center",
+          title: "Detail",
           headerStyle: {
             backgroundColor: THEME.colors.primary,
+          },
+          headerTitleStyle: {
+            fontSize: 25,
+            color: THEME.colors.tertiary,
+            fontFamily: "Body-Font",
+            fontWeight: "bold",
           },
         }}
       />
