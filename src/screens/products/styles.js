@@ -7,9 +7,6 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: THEME.colors.background,
   },
-  title: {
-    fontSize: 20,
-    fontFamily: "Body-Font",
-    marginVertical: 20,
-  },
+  listContainer: {},
+  flatList: {},
 });

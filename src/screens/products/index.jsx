@@ -21,11 +21,14 @@ const Products = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <FlatList
-        data={PRODUCTS}
-        renderItem={renderItem}
-        keyExtractor={keyExtractor}
-      />
+      <View style={styles.listContainer}>
+        <FlatList
+          style={styles.flatList}
+          data={PRODUCTS}
+          renderItem={renderItem}
+          keyExtractor={keyExtractor}
+        />
+      </View>
     </View>
   );
 };
