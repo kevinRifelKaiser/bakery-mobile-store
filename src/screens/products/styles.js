@@ -4,17 +4,17 @@ import { THEME } from "../../constants/theme";
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
+    width: "100%",
+    height: "100%",
     alignItems: "center",
     backgroundColor: THEME.colors.background,
   },
   wrapperContainer: {
-    height: 200,
-    backgroundColor: "lightblue",
+    height: 500,
+    width: "100%",
     justifyContent: "center",
     alignItems: "center",
-  },
-  wrapper: {
-    height: "100%",
+    alignSelf: "stretch",
   },
   slide1: {
     justifyContent: "center",
@@ -31,12 +31,8 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#92BBD9",
   },
-  text: {
-    color: "#fff",
-    fontSize: 30,
-    fontWeight: "bold",
-  },
-  listOfItems: {
-    flex: 1,
+  image: {
+    width: "100%",
+    height: "100%",
   },
 });

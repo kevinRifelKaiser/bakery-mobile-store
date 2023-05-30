@@ -3,6 +3,10 @@ import { THEME } from "../../constants/theme";
 
 export const styles = StyleSheet.create({
   container: {
+    width: "100%",
+    alignItems: "center",
+  },
+  cardContainer: {
     flex: 1,
     width: 300,
     height: 300,
@@ -23,11 +27,12 @@ export const styles = StyleSheet.create({
   imageContainer: {
     height: "60%",
     width: "100%",
+    alignItems: "center",
+    justifyContent: "center",
   },
   image: {
     height: "100%",
     width: "100%",
-    resizeMode: "cover",
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
   },
