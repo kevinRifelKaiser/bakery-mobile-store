@@ -1,4 +1,4 @@
-import { View, Text, FlatList, Image } from "react-native";
+import { View, FlatList, Image } from "react-native";
 import Swiper from "react-native-swiper";
 
 import { styles } from "./styles";
@@ -21,7 +21,7 @@ const Products = ({ navigation }) => {
 
   const renderSwiperHeader = () => (
     <View style={styles.wrapperContainer}>
-      <Swiper style={styles.wrapper} showsButtons={true} scrollEnabled={true}>
+      <Swiper style={styles.wrapper} scrollEnabled={true} autoplay={false}>
         <View style={styles.slide1}>
           <Image
             style={styles.image}
