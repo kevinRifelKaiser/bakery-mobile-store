@@ -10,6 +10,8 @@ const Products = ({ navigation }) => {
   const onSelected = (item) => {
     navigation.navigate("ProductDetail", {
       title: item.title,
+      description: item.description,
+      uri: item.uri,
     });
   };
 

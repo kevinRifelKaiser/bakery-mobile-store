@@ -9,5 +9,6 @@ export const THEME = {
     aditionalTwo: "#6E653F",
     homePageOne: "#a4cfd4",
     homePageTwo: "#23393a",
+    fav: "#DB4437",
   },
 };
