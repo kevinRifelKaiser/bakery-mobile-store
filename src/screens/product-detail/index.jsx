@@ -5,8 +5,14 @@ import { styles } from "./styles";
 import { THEME } from "../../constants/theme";
 import { Ionicons } from "@expo/vector-icons";
 
+import { useAppSelector } from "../../hooks/store";
+
 const ProductDetail = ({ route }) => {
-  const { title, description, uri } = route.params;
+  const { products, selected } = useAppSelector((state) => state.products);
+
+  const productData = products.find((item) => item.id === selected);
+
+  const { title } = route.params;
   const [itemCount, setItemCount] = useState(1);
   const [isFav, setIsFav] = useState(false);
 
@@ -23,9 +29,9 @@ const ProductDetail = ({ route }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{title}</Text>
-      <Image style={styles.img} source={{ uri: uri }} />
+      <Image style={styles.img} source={{ uri: productData.uri }} />
       <View style={styles.descriptionContainer}>
-        <Text style={styles.description}>{description}</Text>
+        <Text style={styles.description}>{productData.description}</Text>
       </View>
       <View style={styles.contentContainer}>
         <View style={styles.addToCartCard}>

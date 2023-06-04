@@ -1,6 +1,8 @@
 import { useFonts } from "expo-font";
 import { ActivityIndicator } from "react-native";
 import AppNavigatior from "./src/navigation";
+import { store } from "./src/store";
+import { Provider } from "react-redux";
 
 import { THEME } from "./src/constants/theme";
 
@@ -17,7 +19,11 @@ const App = () => {
     );
   }
 
-  return <AppNavigatior />;
+  return (
+    <Provider store={store}>
+      <AppNavigatior />
+    </Provider>
+  );
 };
 
 export default App;

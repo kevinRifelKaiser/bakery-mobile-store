@@ -2,21 +2,20 @@ import { View, FlatList, Image } from "react-native";
 import Swiper from "react-native-swiper";
 
 import { styles } from "./styles";
-import { PRODUCTS } from "../../constants/data/products";
+import { useAppSelector } from "../../hooks/store";
+import useProductActions from "../../hooks/useProductActions";
 
 import { ProductItem } from "../../components";
 
 const Products = ({ navigation }) => {
-  const onSelected = (item) => {
-    navigation.navigate("ProductDetail", {
-      title: item.title,
-      description: item.description,
-      uri: item.uri,
-    });
-  };
+  const data = useAppSelector((state) => state.products.products);
+  const { onHandleSelect } = useProductActions();
 
   const renderItem = ({ item }) => (
-    <ProductItem item={item} onSelected={onSelected} />
+    <ProductItem
+      item={item}
+      onSelected={() => onHandleSelect(navigation, item)}
+    />
   );
 
   const keyExtractor = (item) => item.id;
@@ -55,7 +54,7 @@ const Products = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <FlatList
-        data={PRODUCTS}
+        data={data}
         renderItem={renderItem}
         keyExtractor={keyExtractor}
         ListHeaderComponent={renderSwiperHeader}
