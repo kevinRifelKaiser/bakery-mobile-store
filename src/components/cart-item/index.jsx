@@ -1,17 +1,28 @@
 import { View, Text, TouchableOpacity, Image } from "react-native";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { styles } from "./styles";
 import { THEME } from "../../constants/theme";
 import { Ionicons } from "@expo/vector-icons";
 
-const CartItem = () => {
-  const [itemCount, setItemCount] = useState(1);
+const CartItem = ({ item, onHandleUpdateCart, onDeleteItem }) => {
+  const [itemCount, setItemCount] = useState(0);
 
-  const addCartItem = (amount) => {
-    setItemCount((currentCount) => {
-      return currentCount + amount;
-    });
+  useEffect(() => {
+    const itemQuantity = item.quantity;
+    setItemCount(itemQuantity);
+  }, [item]);
+
+  const substractCartItem = () => {
+    const amount = -1;
+    const itemId = item.id;
+    onHandleUpdateCart({ amount, itemId });
+  };
+
+  const addCartItem = () => {
+    const amount = 1;
+    const itemId = item.id;
+    onHandleUpdateCart({ amount, itemId });
   };
 
   return (
@@ -20,31 +31,33 @@ const CartItem = () => {
         <Image
           style={styles.img}
           source={{
-            uri: "https://images.unsplash.com/photo-1620921586333-b7566c34550a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=435&q=80",
+            uri: item.uri,
           }}
         />
         <View style={styles.textContainer}>
-          <Text style={styles.description}>title</Text>
-          <Text style={styles.description}>$ xx.xx</Text>
-          <Text style={styles.description}>x 24</Text>
+          <Text style={styles.description}>{item.title}</Text>
+          <Text style={styles.description}>Price: $ {item.price}</Text>
+          <Text style={{ ...styles.description, fontSize: 16 }}>
+            Total: $ {item.price * item.quantity}
+          </Text>
         </View>
       </View>
       <View style={styles.handleItemContainer}>
-        <TouchableOpacity onPress={() => null}>
+        <TouchableOpacity onPress={() => onDeleteItem(item.id)}>
           <Ionicons name="trash" size={24} color={THEME.colors.black} />
         </TouchableOpacity>
         <View style={styles.counterContainer}>
           <TouchableOpacity
             style={styles.counterButtons}
             disabled={itemCount === 1}
-            onPress={() => addCartItem(-1)}>
+            onPress={substractCartItem}>
             <Ionicons name="remove" size={35} color={THEME.colors.black} />
           </TouchableOpacity>
           <Text style={styles.counterText}>{itemCount}</Text>
           <TouchableOpacity
             style={styles.counterButtons}
             disabled={itemCount === 30}
-            onPress={() => addCartItem(1)}>
+            onPress={addCartItem}>
             <Ionicons name="add" size={35} color={THEME.colors.black} />
           </TouchableOpacity>
         </View>

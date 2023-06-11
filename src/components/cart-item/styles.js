@@ -24,7 +24,9 @@ export const styles = StyleSheet.create({
     borderRadius: 5,
   },
   textContainer: {
+    height: "90%",
     marginLeft: 10,
+    justifyContent: "space-around",
   },
   description: {
     fontFamily: "Body-Font",

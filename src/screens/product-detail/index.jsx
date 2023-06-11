@@ -6,9 +6,12 @@ import { THEME } from "../../constants/theme";
 import { Ionicons } from "@expo/vector-icons";
 
 import { useAppSelector } from "../../hooks/store";
+import useCartActions from "../../hooks/useCartActions";
 
 const ProductDetail = ({ route }) => {
   const { products, selected } = useAppSelector((state) => state.products);
+
+  const { onHandleAddItem } = useCartActions();
 
   const productData = products.find((item) => item.id === selected);
 
@@ -16,10 +19,15 @@ const ProductDetail = ({ route }) => {
   const [itemCount, setItemCount] = useState(1);
   const [isFav, setIsFav] = useState(false);
 
-  const addCartItem = (amount) => {
+  const sumCartItem = (amount) => {
     setItemCount((currentCount) => {
       return currentCount + amount;
     });
+  };
+
+  const addItemToCart = () => {
+    onHandleAddItem({ productData, itemCount });
+    setItemCount(1);
   };
 
   const onHandleFav = () => {
@@ -39,7 +47,7 @@ const ProductDetail = ({ route }) => {
             <TouchableOpacity
               style={styles.counterButtons}
               disabled={itemCount === 1}
-              onPress={() => addCartItem(-1)}>
+              onPress={() => sumCartItem(-1)}>
               <Ionicons
                 name="remove"
                 size={40}
@@ -50,11 +58,13 @@ const ProductDetail = ({ route }) => {
             <TouchableOpacity
               style={styles.counterButtons}
               disabled={itemCount === 30}
-              onPress={() => addCartItem(1)}>
+              onPress={() => sumCartItem(1)}>
               <Ionicons name="add" size={40} color={THEME.colors.secondary} />
             </TouchableOpacity>
           </View>
-          <TouchableOpacity style={styles.addToCartButton} onPress={() => null}>
+          <TouchableOpacity
+            style={styles.addToCartButton}
+            onPress={addItemToCart}>
             <Text style={styles.addToCartText}>Add to cart</Text>
           </TouchableOpacity>
         </View>

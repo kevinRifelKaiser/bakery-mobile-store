@@ -7,7 +7,6 @@ export const PRODUCTS = [
     uri: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1026&q=80",
     weight: 100,
     price: 2,
-    quantity: 1,
   },
   {
     id: 2,
@@ -17,7 +16,6 @@ export const PRODUCTS = [
     uri: "https://images.unsplash.com/photo-1631129023315-7ef0e76faaed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
     weight: 110,
     price: 2.5,
-    quantity: 1,
   },
   {
     id: 3,
@@ -28,7 +26,6 @@ export const PRODUCTS = [
     uri: "https://images.unsplash.com/photo-1667729509741-084595a833e3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1174&q=80",
     weight: 120,
     price: 3,
-    quantity: 1,
   },
   {
     id: 4,
@@ -39,7 +36,6 @@ export const PRODUCTS = [
     uri: "https://images.unsplash.com/photo-1569864358642-9d1684040f43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
     weight: 60,
     price: 4,
-    quantity: 6,
   },
   {
     id: 5,
@@ -50,7 +46,6 @@ export const PRODUCTS = [
     uri: "https://images.unsplash.com/photo-1619985632461-f33748ef8f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1075&q=80",
     weight: 120,
     price: 5,
-    quantity: 1,
   },
   {
     id: 6,
@@ -71,7 +66,6 @@ export const PRODUCTS = [
     uri: "https://images.unsplash.com/photo-1585478259715-876a6a81fc08?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80",
     weight: 400,
     price: 1,
-    quantity: 1,
   },
   {
     id: 8,
@@ -82,7 +76,6 @@ export const PRODUCTS = [
     uri: "https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
     weight: 200,
     price: 3,
-    quantity: 1,
   },
   {
     id: 9,
