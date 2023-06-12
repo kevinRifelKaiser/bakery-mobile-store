@@ -5,12 +5,25 @@ import { View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { THEME } from "../constants/theme";
 
+import { useState, useEffect } from "react";
+
 import ShopNavigator from "./shop";
 import CartNavigator from "./cart";
 import FavoritesNavigator from "./favorites";
 
+import { useAppSelector } from "../hooks/store";
+import { countItems } from "../utils";
+
 const AppNavigatior = () => {
   const ButtomTab = createBottomTabNavigator();
+
+  const { items } = useAppSelector((state) => state.cart);
+
+  const [amountOfItems, setAmountOfItems] = useState(0);
+
+  useEffect(() => {
+    setAmountOfItems(countItems(items));
+  }, [items]);
 
   return (
     <NavigationContainer>
@@ -53,6 +66,11 @@ const AppNavigatior = () => {
                 />
               </View>
             ),
+            tabBarBadge: items.length > 0 ? amountOfItems : null,
+            tabBarBadgeStyle: {
+              backgroundColor: THEME.colors.tertiary,
+              color: THEME.colors.secondary,
+            },
           }}
         />
         <ButtomTab.Screen

@@ -1,5 +1,10 @@
 import { useAppDispatch } from "./store";
-import { addToCart, updateCart, deleteItem } from "../store/cart/cartSlice";
+import {
+  addToCart,
+  updateCart,
+  deleteItem,
+  confirmCart,
+} from "../store/cart/cartSlice";
 
 const useCartActions = () => {
   const dispatch = useAppDispatch();
@@ -16,7 +21,11 @@ const useCartActions = () => {
     dispatch(deleteItem(id));
   };
 
-  return { onHandleAddItem, onHandleUpdateCart, onDeleteItem };
+  const onHandleConfirm = (items, totalAmount) => {
+    dispatch(confirmCart(items, totalAmount));
+  };
+
+  return { onHandleAddItem, onHandleUpdateCart, onDeleteItem, onHandleConfirm };
 };
 
 export default useCartActions;

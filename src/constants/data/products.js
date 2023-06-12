@@ -15,7 +15,7 @@ export const PRODUCTS = [
     description: "Classic chocolat croissant",
     uri: "https://images.unsplash.com/photo-1631129023315-7ef0e76faaed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
     weight: 110,
-    price: 2.5,
+    price: 2,
   },
   {
     id: 3,
@@ -85,6 +85,6 @@ export const PRODUCTS = [
     description: "Classic ciabatta, ideal for sandwiches",
     uri: "https://images.unsplash.com/photo-1667386773920-c73f3b02a3d6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
     weight: 100,
-    price: 0.5,
+    price: 1,
   },
 ];

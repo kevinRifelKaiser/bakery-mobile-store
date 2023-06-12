@@ -3,9 +3,9 @@ export const formatDate = (time) => {
   return setDate.toLocaleDateString();
 };
 
-export const sumTotal = (items) => {
-  return items
-    ?.map((item) => item.price * item.quantity)
+export const sumTotal = (list) => {
+  return list
+    ?.map((listItem) => listItem.price * listItem.quantity)
     .reduce((a, b) => a + b, 0);
 };
 

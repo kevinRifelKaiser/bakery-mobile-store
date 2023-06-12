@@ -7,10 +7,15 @@ import { CartItem } from "../../components";
 import { useAppSelector } from "../../hooks/store";
 import useCartActions from "../../hooks/useCartActions";
 
+import { sumTotal } from "../../utils";
+
 const Cart = () => {
-  const { onHandleUpdateCart, onDeleteItem } = useCartActions();
+  const { onHandleUpdateCart, onDeleteItem, onHandleConfirm } =
+    useCartActions();
 
   const { items } = useAppSelector((state) => state.cart);
+
+  const totalAmount = sumTotal(items);
 
   const renderItem = ({ item }) => (
     <CartItem
@@ -22,8 +27,8 @@ const Cart = () => {
 
   const keyExtractor = (item) => item.id;
 
-  const onHandleConfirm = () => {
-    console.log(itemsListLength);
+  const confirmOrder = () => {
+    onHandleConfirm(items, totalAmount);
   };
 
   const Header = () => {
@@ -39,8 +44,8 @@ const Cart = () => {
   const Footer = () => {
     return (
       items.length > 0 && (
-        <TouchableOpacity onPress={onHandleConfirm} style={styles.subtotal}>
-          <Text style={styles.subtotalText}>Total: {"amount"}</Text>
+        <TouchableOpacity onPress={confirmOrder} style={styles.subtotal}>
+          <Text style={styles.subtotalText}>Total: $ {totalAmount}</Text>
           <Text style={styles.subtotalText}>Confirm</Text>
         </TouchableOpacity>
       )
