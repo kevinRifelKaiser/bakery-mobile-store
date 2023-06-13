@@ -4,6 +4,7 @@ import {
   updateCart,
   deleteItem,
   confirmCart,
+  clearCart,
 } from "../store/cart/cartSlice";
 
 const useCartActions = () => {
@@ -21,11 +22,21 @@ const useCartActions = () => {
     dispatch(deleteItem(id));
   };
 
-  const onHandleConfirm = (items, totalAmount) => {
-    dispatch(confirmCart(items, totalAmount));
+  const onHandleConfirm = (items) => {
+    dispatch(confirmCart(items));
   };
 
-  return { onHandleAddItem, onHandleUpdateCart, onDeleteItem, onHandleConfirm };
+  const onHandleClearCart = () => {
+    dispatch(clearCart());
+  };
+
+  return {
+    onHandleAddItem,
+    onHandleUpdateCart,
+    onDeleteItem,
+    onHandleConfirm,
+    onHandleClearCart,
+  };
 };
 
 export default useCartActions;

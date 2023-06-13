@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { API_URL } from "../../constants/firebase";
+import { sumTotal } from "../../utils";
 
 const initialState = {
   items: [],
@@ -8,8 +9,8 @@ const initialState = {
 
 export const confirmCart = createAsyncThunk(
   "cart/confirmCart",
-  async (items, totalAmount) => {
-    const total = totalAmount;
+  async (items) => {
+    const total = sumTotal(items);
     try {
       const response = await fetch(`${API_URL}orders.json`, {
         method: "POST",
@@ -19,7 +20,7 @@ export const confirmCart = createAsyncThunk(
         body: JSON.stringify({
           date: Date.now(),
           items: { ...items },
-          total,
+          total: total,
         }),
       });
       const result = await response.json();
@@ -67,6 +68,9 @@ export const cartSlice = createSlice({
         items: updatedCart,
       };
     },
+    clearCart: (state) => {
+      state.items = [];
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(confirmCart.fulfilled, (state, action) => {
@@ -75,6 +79,7 @@ export const cartSlice = createSlice({
   },
 });
 
-export const { addToCart, updateCart, deleteItem } = cartSlice.actions;
+export const { addToCart, updateCart, deleteItem, clearCart } =
+  cartSlice.actions;
 
 export default cartSlice.reducer;

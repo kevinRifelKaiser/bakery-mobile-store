@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { View, Text, FlatList, TouchableOpacity } from "react-native";
 import { styles } from "./styles";
 
@@ -9,9 +8,8 @@ import useCartActions from "../../hooks/useCartActions";
 
 import { sumTotal } from "../../utils";
 
-const Cart = () => {
-  const { onHandleUpdateCart, onDeleteItem, onHandleConfirm } =
-    useCartActions();
+const Cart = ({ navigation }) => {
+  const { onHandleUpdateCart, onDeleteItem } = useCartActions();
 
   const { items } = useAppSelector((state) => state.cart);
 
@@ -27,8 +25,8 @@ const Cart = () => {
 
   const keyExtractor = (item) => item.id;
 
-  const confirmOrder = () => {
-    onHandleConfirm(items, totalAmount);
+  const checkOutOrder = () => {
+    navigation.navigate("Checkout");
   };
 
   const Header = () => {
@@ -44,9 +42,9 @@ const Cart = () => {
   const Footer = () => {
     return (
       items.length > 0 && (
-        <TouchableOpacity onPress={confirmOrder} style={styles.subtotal}>
+        <TouchableOpacity onPress={checkOutOrder} style={styles.subtotal}>
           <Text style={styles.subtotalText}>Total: $ {totalAmount}</Text>
-          <Text style={styles.subtotalText}>Confirm</Text>
+          <Text style={styles.subtotalText}>Check out</Text>
         </TouchableOpacity>
       )
     );

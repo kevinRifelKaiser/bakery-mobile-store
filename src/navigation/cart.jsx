@@ -1,6 +1,6 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import { Cart } from "../screens";
+import { Cart, CheckOut, ThanksForBuy } from "../screens";
 import { THEME } from "../constants/theme";
 
 const CartNavigator = () => {
@@ -17,6 +17,25 @@ const CartNavigator = () => {
             backgroundColor: THEME.colors.primary,
             height: 20,
           },
+        }}
+      />
+      <Stack.Screen
+        name="Checkout"
+        component={CheckOut}
+        options={{
+          title: "Check out",
+          headerTitleAlign: "center",
+          headerStyle: {
+            backgroundColor: THEME.colors.primary,
+            height: 20,
+          },
+        }}
+      />
+      <Stack.Screen
+        name="Finish"
+        component={ThanksForBuy}
+        options={{
+          headerShown: false,
         }}
       />
     </Stack.Navigator>

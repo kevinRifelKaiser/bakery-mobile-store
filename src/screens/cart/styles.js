@@ -6,6 +6,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    position: "relative",
   },
   header: {
     alignItems: "center",
@@ -22,10 +23,11 @@ export const styles = StyleSheet.create({
   subtotal: {
     width: "85%",
     height: 60,
+    position: "absolute",
+    bottom: 10,
     backgroundColor: THEME.colors.tertiary,
     paddingHorizontal: 30,
     borderRadius: 10,
-    marginBottom: 10,
     alignItems: "center",
     flexDirection: "row",
     justifyContent: "space-between",
