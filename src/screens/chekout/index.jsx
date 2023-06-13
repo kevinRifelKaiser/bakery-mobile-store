@@ -7,15 +7,14 @@ import { sumTotal, countItems } from "../../utils";
 
 const CheckOut = ({ navigation }) => {
   const { items } = useAppSelector((state) => state.cart);
-  const { onHandleConfirm, onHandleClearCart } = useCartActions();
+  const { onHandleConfirm } = useCartActions();
 
   const totalPurchase = sumTotal(items);
 
   const itemsQuantity = countItems(items);
 
   const confirmOrder = () => {
-    onHandleConfirm(items);
-    onHandleClearCart();
+    // onHandleConfirm(items);
     navigation.navigate("Finish");
   };
 
