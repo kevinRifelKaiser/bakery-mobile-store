@@ -18,7 +18,7 @@ const ThanksForBuy = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Thank you very much for choosing us!</Text>
-      <Text style={styles.subTitle}>And now what? {"\uD83E\uDD14"}</Text>
+      <Text style={styles.subTitle}>And now what?</Text>
       <Text style={styles.subTitle}>
         Of course you can keep watching our site!
       </Text>

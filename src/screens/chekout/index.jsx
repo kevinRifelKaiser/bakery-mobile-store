@@ -14,7 +14,7 @@ const CheckOut = ({ navigation }) => {
   const itemsQuantity = countItems(items);
 
   const confirmOrder = () => {
-    // onHandleConfirm(items);
+    onHandleConfirm(items);
     navigation.navigate("Finish");
   };
 
