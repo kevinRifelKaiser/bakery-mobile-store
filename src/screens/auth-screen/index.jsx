@@ -23,7 +23,7 @@ const AuthScreen = () => {
   const [passwordValue, setPasswordValue] = useState("");
   const [confirmPassword, setConfirmPasword] = useState("");
   const [formIsValid, setFormValid] = useState(false);
-  const { onHandleSignUp } = useAuthActions();
+  const { onHandleSignUp, onHandleLogIn } = useAuthActions();
 
   const handleSignUp = () => {
     if (formIsValid) {
@@ -45,11 +45,34 @@ const AuthScreen = () => {
     }
   };
 
+  const handleLogIn = () => {
+    if (formIsValid) {
+      onHandleLogIn({ email: emailValue, password: passwordValue });
+      setEmailValue("");
+      setPasswordValue("");
+      setFormValid(false);
+    } else {
+      Alert.alert(
+        "Formulario inválido",
+        "Ingresa un email y contraseña válidos",
+        [{ text: "Ok" }]
+      );
+    }
+  };
+
   useEffect(() => {
     console.log({ emailValue, passwordValue, confirmPassword });
+    const validatePassword = () => {
+      let passValid = false;
+      if (register) {
+        passValid = passwordValue === confirmPassword;
+      } else {
+        passValid = true;
+      }
+      return passValid;
+    };
     const isValid =
-      validateEmail(emailValue, "required", 20, 8) &&
-      passwordValue === confirmPassword;
+      validateEmail(emailValue, "required", 20, 8) && validatePassword;
     setFormValid(isValid);
   }, [emailValue, passwordValue, confirmPassword]);
 
@@ -110,7 +133,7 @@ const AuthScreen = () => {
           <View>
             <TouchableOpacity
               style={styles.registerButton}
-              onPress={handleSignUp}>
+              onPress={register ? handleSignUp : handleLogIn}>
               <Text style={styles.registerButtonText}>
                 {register ? "Register" : "Log in"}
               </Text>
@@ -118,12 +141,12 @@ const AuthScreen = () => {
             <View style={styles.textRegisterContainer}>
               <Text style={styles.textRegister}>
                 {register
-                  ? "You don't have an account? you can "
-                  : "Already have an account? You can "}
+                  ? "Already have an account? You can "
+                  : "You don't have an account? you can "}
               </Text>
               <TouchableHighlight onPress={handleRegisterScreen}>
                 <Text style={styles.pressableText}>
-                  {register ? "create an account." : "login here."}
+                  {register ? "login here." : "create one here."}
                 </Text>
               </TouchableHighlight>
             </View>

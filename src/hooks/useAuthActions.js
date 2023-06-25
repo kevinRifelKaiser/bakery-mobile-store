@@ -1,5 +1,5 @@
 import { useAppDispatch } from "./store";
-import { signUp, logOut } from "../store/auth/authSlice";
+import { signUp, logIn, logOut } from "../store/auth/authSlice";
 
 const useAuthActions = () => {
   const dispatch = useAppDispatch();
@@ -8,11 +8,15 @@ const useAuthActions = () => {
     dispatch(signUp(signUpData));
   };
 
+  const onHandleLogIn = (logInData) => {
+    dispatch(logIn(logInData));
+  };
+
   const onHandleLogOut = () => {
     dispatch(logOut());
   };
 
-  return { onHandleSignUp, onHandleLogOut };
+  return { onHandleSignUp, onHandleLogIn, onHandleLogOut };
 };
 
 export default useAuthActions;
