@@ -30,6 +30,7 @@ const AuthScreen = () => {
       onHandleSignUp({ email: emailValue, password: passwordValue });
       setEmailValue("");
       setPasswordValue("");
+      setConfirmPasword("");
       setFormValid(false);
     } else if (passwordValue !== confirmPassword) {
       Alert.alert("Passwords don't match", "Plese rewrite your passwords", [
@@ -50,7 +51,7 @@ const AuthScreen = () => {
       validateEmail(emailValue, "required", 20, 8) &&
       passwordValue === confirmPassword;
     setFormValid(isValid);
-  }, [emailValue, passwordValue]);
+  }, [emailValue, passwordValue, confirmPassword]);
 
   const handleRegisterScreen = () => {
     setRegister(!register);
