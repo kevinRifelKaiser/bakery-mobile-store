@@ -1,24 +1,17 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { Login } from "../screens";
-
-import { THEME } from "../constants/theme";
+import { Auth, AuthScreen } from "../screens";
 
 const AuthNavigator = () => {
   const Stack = createNativeStackNavigator();
 
   return (
-    <Stack.Navigator initialRouteName="Profile">
-      <Stack.Screen
-        name="Login"
-        component={Login}
-        options={{
-          headerTitleAlign: "center",
-          headerStyle: {
-            backgroundColor: THEME.colors.primary,
-            height: 20,
-          },
-        }}
-      />
+    <Stack.Navigator
+      initialRouteName="Auth"
+      screenOptions={{
+        headerShadowVisible: false,
+        headerShown: false,
+      }}>
+      <Stack.Screen name="Auth" component={AuthScreen} />
     </Stack.Navigator>
   );
 };
