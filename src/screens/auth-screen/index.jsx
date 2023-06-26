@@ -7,6 +7,7 @@ import {
   TouchableHighlight,
   TouchableOpacity,
   TextInput,
+  StatusBar,
   TouchableWithoutFeedback,
   View,
 } from "react-native";
@@ -82,7 +83,7 @@ const AuthScreen = () => {
 
   return (
     <KeyboardAvoidingView
-      style={styles.mainContainer}
+      style={{ ...styles.mainContainer, paddingTop: StatusBar.currentHeight }}
       behavior={Platform.OS === "ios" ? "padding" : "height"}
       keyboardVerticalOffset={50}>
       <TouchableWithoutFeedback

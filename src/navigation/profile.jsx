@@ -12,6 +12,7 @@ const ProfileNavigator = () => {
         name="Profile"
         component={Profile}
         options={{
+          title: "My profile",
           headerTitleAlign: "center",
           headerStyle: {
             backgroundColor: THEME.colors.primary,
