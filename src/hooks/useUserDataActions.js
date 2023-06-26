@@ -1,11 +1,14 @@
 import { useAppDispatch } from "./store";
-import { addUserImage } from "../store/userData/userDataSlice";
+import {
+  addUserImage,
+  addProfilePicture,
+} from "../store/userData/userDataSlice";
 
 const useUserDataActions = () => {
   const dispatch = useAppDispatch();
 
   const onHandleAddImage = (imgUri) => {
-    dispatch(addUserImage(imgUri));
+    dispatch(addProfilePicture(imgUri));
   };
 
   return { onHandleAddImage };

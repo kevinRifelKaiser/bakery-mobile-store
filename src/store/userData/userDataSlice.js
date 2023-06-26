@@ -1,4 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import * as FileSystem from "expo-file-system";
 
 const initialState = {
   name: "",
@@ -9,17 +10,33 @@ const initialState = {
   cardNumber: "",
 };
 
+export const addProfilePicture = createAsyncThunk(
+  "userDate/addProfilePicture",
+  async (image) => {
+    const fileName = image.split("/").pop();
+    const Path = FileSystem.documentDirectory + fileName;
+    try {
+      FileSystem.moveAsync({
+        from: image,
+        to: Path,
+      });
+      return Path;
+    } catch (error) {
+      console.log(error.message);
+      throw error;
+    }
+  }
+);
+
 export const userDataSlice = createSlice({
   name: "userData",
   initialState,
-  reducers: {
-    addUserImage: (state, action) => {
-      const userImg = action.payload;
-      state.picture = userImg;
-    },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(addProfilePicture.fulfilled, (state, action) => {
+      state.picture = action.payload;
+    });
   },
 });
-
-export const { addUserImage } = userDataSlice.actions;
 
 export default userDataSlice.reducer;
