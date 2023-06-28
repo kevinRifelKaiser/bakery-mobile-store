@@ -8,7 +8,7 @@ import { Ionicons } from "@expo/vector-icons";
 
 import useUserDataActions from "../../hooks/useUserDataActions";
 
-const ProfileImage = ({ modalVisible, handleModal }) => {
+const ProfileImage = ({ pictureModalVisible, handlePictureModal }) => {
   const { onHandleAddImage } = useUserDataActions();
   const [imageUri, setImageUri] = useState();
 
@@ -17,8 +17,8 @@ const ProfileImage = ({ modalVisible, handleModal }) => {
 
     if (status !== "granted") {
       Alert.alert(
-        "Permisos son insuficientes",
-        "Necesitamos dar permisos de la camara para usar la aplicacion",
+        "Insufficient permissions",
+        "You need to authorize the permissions",
         [{ text: "Ok" }]
       );
       return false;
@@ -41,16 +41,16 @@ const ProfileImage = ({ modalVisible, handleModal }) => {
   const handleConfirmPicture = () => {
     onHandleAddImage(imageUri);
     setImageUri();
-    handleModal();
+    handlePictureModal();
   };
 
   const handleCancel = () => {
     setImageUri();
-    handleModal();
+    handlePictureModal();
   };
 
   return (
-    <Modal animationType="slide" visible={modalVisible}>
+    <Modal animationType="slide" visible={pictureModalVisible}>
       <View style={styles.container}>
         <View style={styles.dataContainer}>
           <Text style={styles.title}>Change your profile picture</Text>

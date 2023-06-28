@@ -5,23 +5,72 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  contentContainer: {
+    flex: 1,
+    alignItems: "center",
+  },
+  separeteView: {
+    width: "90%",
+    height: 1,
+    marginVertical: 10,
+    backgroundColor: THEME.colors.tertiary,
+  },
   imgContainer: {
     justifyContent: "center",
     alignItems: "center",
   },
-  editIcon: {
+  editImg: {
     position: "absolute",
-    backgroundColor: THEME.colors.background,
+    backgroundColor: THEME.colors.tertiary,
     padding: 7,
     borderRadius: 100,
     top: 180,
-    right: 100,
+    right: 10,
   },
   image: {
     height: 200,
     width: 200,
     marginVertical: 20,
     borderRadius: 100,
+  },
+  addressContainer: {
+    width: "90%",
+    justifyContent: "center",
+  },
+  addressTitleContainer: {
+    width: "100%",
+    alignItems: "flex-start",
+    paddingVertical: 5,
+  },
+  addressTitleText: {
+    fontFamily: "Body-Font",
+    fontSize: 18,
+    fontWeight: "bold",
+    color: THEME.colors.black,
+  },
+  addAddressContainer: {
+    width: "100%",
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 10,
+  },
+  addContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "50%",
+  },
+  addressText: {
+    fontFamily: "Body-Font",
+    fontSize: 16,
+    color: THEME.colors.black,
+  },
+  editAddress: {
+    position: "absolute",
+    backgroundColor: THEME.colors.tertiary,
+    padding: 5,
+    borderRadius: 100,
+    right: 5,
   },
   buttonsContainer: {
     marginTop: 50,

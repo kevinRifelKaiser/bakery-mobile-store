@@ -1,7 +1,7 @@
 import { useAppDispatch } from "./store";
 import {
-  addUserImage,
   addProfilePicture,
+  addShippingAddress,
 } from "../store/userData/userDataSlice";
 
 const useUserDataActions = () => {
@@ -11,7 +11,11 @@ const useUserDataActions = () => {
     dispatch(addProfilePicture(imgUri));
   };
 
-  return { onHandleAddImage };
+  const onHandleAddAddress = (location) => {
+    dispatch(addShippingAddress(location));
+  };
+
+  return { onHandleAddImage, onHandleAddAddress };
 };
 
 export default useUserDataActions;
