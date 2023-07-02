@@ -4,6 +4,7 @@ import { THEME } from "../../constants/theme";
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
+    position: "relative",
   },
   contentContainer: {
     flex: 1,
@@ -14,6 +15,24 @@ export const styles = StyleSheet.create({
     height: 1,
     marginVertical: 10,
     backgroundColor: THEME.colors.tertiary,
+  },
+  editDataButton: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: THEME.colors.tertiary,
+    borderRadius: 5,
+    paddingHorizontal: 5,
+    paddingVertical: 7,
+    position: "absolute",
+    right: 10,
+    top: 10,
+  },
+  editButtonText: {
+    marginLeft: 5,
+    color: THEME.colors.secondary,
+    fontFamily: "Body-Font",
+    fontSize: 14,
+    fontWeight: "bold",
   },
   imgContainer: {
     justifyContent: "center",

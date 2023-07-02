@@ -4,59 +4,41 @@ import { THEME } from "../../constants/theme";
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "space-between",
-    paddingVertical: 50,
-  },
-  dataContainer: {
-    alignItems: "center",
   },
   title: {
+    marginTop: 20,
     fontFamily: "Body-Font",
-    fontSize: 20,
-    fontWeight: "bold",
+    fontSize: 24,
     color: THEME.colors.black,
   },
-  defaultImg: {
-    marginTop: 20,
-    height: 350,
-    width: 280,
-    alignItems: "center",
-    justifyContent: "center",
-    borderWidth: 0.5,
-    borderColor: THEME.colors.black,
-  },
-  userImg: {
-    marginTop: 20,
-    height: 300,
-    width: 240,
-  },
-  modalDefaultText: {
-    fontFamily: "Body-Font",
-    fontSize: 18,
-    fontWeight: "bold",
-    color: THEME.colors.black,
-  },
-  takePicture: {
-    marginTop: 30,
-    width: 60,
-    height: 60,
+  separeteView: {
+    width: "90%",
+    height: 1,
+    marginVertical: 10,
     backgroundColor: THEME.colors.tertiary,
-    borderRadius: 100,
-    justifyContent: "center",
+  },
+  centerContainer: {
+    width: "100%",
     alignItems: "center",
   },
-  confirmContainer: {
+  buttonsContainer: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
+    width: "100%",
+  },
+  confirmButton: {
     width: 150,
     backgroundColor: "#00FF00",
-    marginTop: 20,
     height: 50,
     padding: 15,
     borderRadius: 10,
     justifyContent: "center",
     alignItems: "center",
+    marginTop: 50,
+    marginBottom: 10,
   },
-  cancelContainer: {
+  cancelButton: {
     width: 150,
     backgroundColor: THEME.colors.fav,
     height: 50,
@@ -64,6 +46,8 @@ export const styles = StyleSheet.create({
     borderRadius: 10,
     justifyContent: "center",
     alignItems: "center",
+    marginTop: 50,
+    marginBottom: 10,
   },
   buttonText: {
     color: THEME.colors.background,

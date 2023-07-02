@@ -4,42 +4,47 @@ import { useState, useEffect } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { THEME } from "../../constants/theme";
 
-import { ProfileImage, ShippingLocation } from "../../components";
+import { ProfileDataForm } from "../../components";
 
 import useAuthActions from "../../hooks/useAuthActions";
+import useUserDataActions from "../../hooks/useUserDataActions";
 import { useAppSelector } from "../../hooks/store";
 
 const Profile = ({ navigation }) => {
   const { onHandleLogOut } = useAuthActions();
+  const { onHandleGetUserData } = useUserDataActions();
 
-  // --- Change profile picture ---
-  const profileImage = useAppSelector((state) => state.userData.picture);
-  const [userImg, setUserImg] = useState();
-  const [pictureModalVisible, setPictureModalVisible] = useState(false);
-  const handlePictureModal = () => {
-    setPictureModalVisible(!pictureModalVisible);
-  };
+  const userData = useAppSelector((state) => state.userData);
 
-  // --- Change delivery address ---
-  const { lat, lng } = useAppSelector((state) => state.userData);
-  const shippingAddress = "Latitude: " + lat + " | Longitude: " + lng;
-  const [userAddress, setUserAddress] = useState();
-  const [addressModalVisible, setAddressModalVisible] = useState(false);
-  const handleAddressModal = () => {
-    setAddressModalVisible(!addressModalVisible);
+  const shippingAddress =
+    "Latitude: " + userData.lat + " | Longitude: " + userData.lng;
+
+  // --- Update profile data ---
+  const [updateDataModal, setUpdateDataModal] = useState(false);
+  const handleUpdateDataModal = () => {
+    setUpdateDataModal(!updateDataModal);
   };
 
   useEffect(() => {
-    setUserImg(profileImage);
-    setUserAddress(shippingAddress);
-  }, [profileImage, shippingAddress]);
+    onHandleGetUserData();
+  }, []);
 
   return (
     <ScrollView style={styles.container}>
       <View style={styles.contentContainer}>
+        <TouchableOpacity
+          onPress={handleUpdateDataModal}
+          style={styles.editDataButton}>
+          <Ionicons
+            name="pencil-sharp"
+            size={24}
+            color={THEME.colors.secondary}
+          />
+          <Text style={styles.editButtonText}>Edit</Text>
+        </TouchableOpacity>
         <View style={styles.imgContainer}>
-          {userImg ? (
-            <Image style={styles.image} source={{ uri: userImg }} />
+          {userData.picture ? (
+            <Image style={styles.image} source={{ uri: userData.picture }} />
           ) : (
             <Image
               style={styles.image}
@@ -48,46 +53,38 @@ const Profile = ({ navigation }) => {
               }}
             />
           )}
-          <TouchableOpacity onPress={handlePictureModal} style={styles.editImg}>
-            <Ionicons
-              name="pencil-sharp"
-              size={30}
-              color={THEME.colors.black}
-            />
-          </TouchableOpacity>
         </View>
         <View style={styles.separeteView}></View>
-        <View style={styles.nameContainer}>
-          <Text style={styles.nameTitle}>Name:</Text>
-          <Text>Update your user name.</Text>
+        <View style={styles.addressContainer}>
+          <Text style={styles.addressTitleText}>Name:</Text>
+          {userData.name ? (
+            <Text>{userData.name}</Text>
+          ) : (
+            <Text style={styles.addressText}>Update your user name.</Text>
+          )}
         </View>
         <View style={styles.separeteView}></View>
         <View style={styles.addressContainer}>
           <View style={styles.addressTitleContainer}>
             <Text style={styles.addressTitleText}>Shipping address:</Text>
           </View>
-          {lat ? (
-            <Text style={styles.defaultAddressText}>{userAddress}</Text>
+          {userData.lat && userData.lng ? (
+            <Text style={styles.defaultAddressText}>{shippingAddress}</Text>
           ) : (
             <View style={styles.addAddressContainer}>
-              <TouchableOpacity
-                onPress={handleAddressModal}
-                style={styles.addContainer}>
-                <Ionicons name="add" size={30} color={THEME.colors.secondary} />
+              <View style={styles.addContainer}>
                 <Text style={styles.addressText}>Add your address</Text>
-              </TouchableOpacity>
+              </View>
             </View>
           )}
-          {lat && (
-            <TouchableOpacity
-              onPress={handleAddressModal}
-              style={styles.editAddress}>
-              <Ionicons
-                name="pencil-sharp"
-                size={30}
-                color={THEME.colors.black}
-              />
-            </TouchableOpacity>
+        </View>
+        <View style={styles.separeteView}></View>
+        <View style={styles.addressContainer}>
+          <Text style={styles.addressTitleText}>Card:</Text>
+          {userData.cardNumber ? (
+            <Text>{userData.cardNumber}</Text>
+          ) : (
+            <Text style={styles.addressText}>Update your user name.</Text>
           )}
         </View>
         <View style={styles.separeteView}></View>
@@ -103,13 +100,14 @@ const Profile = ({ navigation }) => {
             <Text style={styles.ordersText}>Log out</Text>
           </TouchableOpacity>
         </View>
-        <ProfileImage
-          pictureModalVisible={pictureModalVisible}
-          handlePictureModal={handlePictureModal}
-        />
-        <ShippingLocation
-          addressModalVisible={addressModalVisible}
-          handleAddressModal={handleAddressModal}
+        <ProfileDataForm
+          updateDataModal={updateDataModal}
+          handleUpdateDataModal={handleUpdateDataModal}
+          picture
+          name
+          lat
+          lng
+          cardNumber
         />
       </View>
     </ScrollView>

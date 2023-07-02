@@ -1,21 +1,21 @@
 import { useAppDispatch } from "./store";
 import {
-  addProfilePicture,
-  addShippingAddress,
+  addProfileData,
+  getProfileData,
 } from "../store/userData/userDataSlice";
 
 const useUserDataActions = () => {
   const dispatch = useAppDispatch();
 
-  const onHandleAddImage = (imgUri) => {
-    dispatch(addProfilePicture(imgUri));
+  const onHandleAddUserData = (userData) => {
+    dispatch(addProfileData(userData));
   };
 
-  const onHandleAddAddress = (location) => {
-    dispatch(addShippingAddress(location));
+  const onHandleGetUserData = () => {
+    dispatch(getProfileData());
   };
 
-  return { onHandleAddImage, onHandleAddAddress };
+  return { onHandleAddUserData, onHandleGetUserData };
 };
 
 export default useUserDataActions;

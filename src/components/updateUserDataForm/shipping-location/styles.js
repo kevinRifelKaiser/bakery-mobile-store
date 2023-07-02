@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { THEME } from "../../constants/theme";
+import { THEME } from "../../../constants/theme";
 
 export const styles = StyleSheet.create({
   container: {
@@ -16,11 +16,13 @@ export const styles = StyleSheet.create({
     color: THEME.colors.black,
     fontFamily: "Body-Font",
     fontWeight: "bold",
-    fontSize: 24,
+    fontSize: 16,
   },
   addressImgContainer: {
     width: 300,
     height: 200,
+    borderColor: THEME.colors.black,
+    borderWidth: 0.5,
     justifyContent: "center",
     alignItems: "center",
     marginVertical: 10,
@@ -34,16 +36,6 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-evenly",
     marginVertical: 20,
-  },
-  cancelContainer: {
-    width: 150,
-    backgroundColor: THEME.colors.fav,
-    height: 50,
-    padding: 15,
-    marginBottom: 40,
-    borderRadius: 10,
-    justifyContent: "center",
-    alignItems: "center",
   },
   buttonText: {
     color: THEME.colors.background,

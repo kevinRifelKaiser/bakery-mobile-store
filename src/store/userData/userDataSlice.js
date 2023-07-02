@@ -1,25 +1,58 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import * as FileSystem from "expo-file-system";
+import { insertUserData, fetchUserData } from "../../database";
+import uuid from "react-native-uuid";
 
 const initialState = {
-  name: "",
   picture: null,
+  name: "",
   lat: null,
   lng: null,
   cardNumber: "",
 };
 
-export const addProfilePicture = createAsyncThunk(
-  "userData/addProfilePicture",
-  async (image) => {
+export const addProfileData = createAsyncThunk(
+  "userData/addProfileData",
+  async ({ image, name, lat, lng, cardNumber }) => {
     const fileName = image.split("/").pop();
     const Path = FileSystem.documentDirectory + fileName;
+    const userDataId = uuid.v4();
     try {
       FileSystem.moveAsync({
         from: image,
         to: Path,
       });
-      return Path;
+      const result = await insertUserData(
+        userDataId,
+        Path,
+        name,
+        lat,
+        lng,
+        cardNumber
+      );
+      console.log(result);
+      return {
+        picture: Path,
+        name,
+        lat,
+        lng,
+        cardNumber,
+      };
+    } catch (error) {
+      console.log(error.message);
+      throw error;
+    }
+  }
+);
+
+export const getProfileData = createAsyncThunk(
+  "userData/getProfileData",
+  async () => {
+    try {
+      const result = await fetchUserData();
+      const lastItem = result.rows._array.pop();
+      // console.log(lastItem);
+      return lastItem;
     } catch (error) {
       console.log(error.message);
       throw error;
@@ -30,19 +63,24 @@ export const addProfilePicture = createAsyncThunk(
 export const userDataSlice = createSlice({
   name: "userData",
   initialState,
-  reducers: {
-    addShippingAddress: (state, action) => {
-      state.lat = action.payload.lat;
-      state.lng = action.payload.lng;
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(addProfilePicture.fulfilled, (state, action) => {
-      state.picture = action.payload;
-    });
+    builder
+      .addCase(addProfileData.fulfilled, (state, action) => {
+        state.picture = action.payload.picture;
+        state.name = action.payload.name;
+        state.lat = action.payload.lat;
+        state.lng = action.payload.lng;
+        state.cardNumber = action.payload.cardNumber;
+      })
+      .addCase(getProfileData.fulfilled, (state, action) => {
+        state.picture = action.payload.picture;
+        state.name = action.payload.name;
+        state.lat = action.payload.lat;
+        state.lng = action.payload.lng;
+        state.cardNumber = action.payload.cardNumber;
+      });
   },
 });
-
-export const { addShippingAddress } = userDataSlice.actions;
 
 export default userDataSlice.reducer;
