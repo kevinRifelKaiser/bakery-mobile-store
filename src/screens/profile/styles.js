@@ -69,15 +69,12 @@ export const styles = StyleSheet.create({
   },
   addAddressContainer: {
     width: "100%",
-    alignItems: "center",
-    justifyContent: "center",
     paddingVertical: 10,
   },
   addContainer: {
-    flexDirection: "row",
     justifyContent: "center",
-    alignItems: "center",
-    width: "50%",
+    alignItems: "flex-start",
+    width: "90%",
   },
   addressText: {
     fontFamily: "Body-Font",

@@ -1,10 +1,10 @@
 {
   "expo": {
     "name": "routine-app",
-    "slug": "routine-app",
+    "slug": "bakery-app",
     "version": "1.0.0",
     "orientation": "portrait",
-    // "icon": "./assets/icon.png",
+    "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",
@@ -12,9 +12,12 @@
       "backgroundColor": "#ffffff"
     },
     "updates": {
-      "fallbackToCacheTimeout": 0
+      "fallbackToCacheTimeout": 0,
+      "url": "https://u.expo.dev/cb16625b-ac58-41a0-af75-69962f6d241d"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
@@ -22,10 +25,20 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.kevinrifelkaiser.bakeryapp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "cb16625b-ac58-41a0-af75-69962f6d241d"
+      }
+    },
+    "owner": "kevinrifelkaiser",
+    "runtimeVersion": {
+      "policy": "sdkVersion"
     }
   }
 }

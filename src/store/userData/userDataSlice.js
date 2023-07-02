@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import * as FileSystem from "expo-file-system";
 import { insertUserData, fetchUserData } from "../../database";
-import uuid from "react-native-uuid";
 
 const initialState = {
   picture: null,
@@ -16,20 +15,12 @@ export const addProfileData = createAsyncThunk(
   async ({ image, name, lat, lng, cardNumber }) => {
     const fileName = image.split("/").pop();
     const Path = FileSystem.documentDirectory + fileName;
-    const userDataId = uuid.v4();
     try {
       FileSystem.moveAsync({
         from: image,
         to: Path,
       });
-      const result = await insertUserData(
-        userDataId,
-        Path,
-        name,
-        lat,
-        lng,
-        cardNumber
-      );
+      const result = await insertUserData(Path, name, lat, lng, cardNumber);
       console.log(result);
       return {
         picture: Path,
@@ -51,7 +42,6 @@ export const getProfileData = createAsyncThunk(
     try {
       const result = await fetchUserData();
       const lastItem = result.rows._array.pop();
-      // console.log(lastItem);
       return lastItem;
     } catch (error) {
       console.log(error.message);
