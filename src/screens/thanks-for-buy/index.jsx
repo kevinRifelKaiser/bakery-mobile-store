@@ -12,16 +12,14 @@ const ThanksForBuy = ({ navigation }) => {
   }, []);
 
   const onHandleGoBack = () => {
-    navigation.navigate("Cart");
+    navigation.popToTop();
+    navigation.navigate("Products");
   };
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Thank you very much for choosing us!</Text>
-      <Text style={styles.subTitle}>And now what?</Text>
-      <Text style={styles.subTitle}>
-        Of course you can keep watching our site!
-      </Text>
+      <Text style={styles.subTitle}>You can keep watching our site!</Text>
       <TouchableOpacity onPress={onHandleGoBack} style={styles.buttonContainer}>
         <Text style={styles.buttonText}>Go back</Text>
       </TouchableOpacity>

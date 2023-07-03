@@ -1,14 +1,19 @@
 import { View, Text, TouchableOpacity } from "react-native";
+import { useEffect } from "react";
+
 import { styles } from "./styles";
 
 import { useAppSelector } from "../../hooks/store";
 import useCartActions from "../../hooks/useCartActions";
+import useUserDataActions from "../../hooks/useUserDataActions";
 import { sumTotal, countItems } from "../../utils";
 
 const CheckOut = ({ navigation }) => {
   const { items } = useAppSelector((state) => state.cart);
   const userData = useAppSelector((state) => state.userData);
   const { onHandleConfirm } = useCartActions();
+
+  const { onHandleGetUserData } = useUserDataActions();
 
   const totalPurchase = sumTotal(items);
 
@@ -18,6 +23,10 @@ const CheckOut = ({ navigation }) => {
     onHandleConfirm(items);
     navigation.navigate("Finish");
   };
+
+  useEffect(() => {
+    onHandleGetUserData();
+  }, []);
 
   return (
     <View style={styles.container}>
