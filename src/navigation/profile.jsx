@@ -24,6 +24,7 @@ const ProfileNavigator = () => {
         name="Orders"
         component={Orders}
         options={{
+          title: "Order history",
           headerTitleAlign: "center",
           headerStyle: {
             backgroundColor: THEME.colors.primary,

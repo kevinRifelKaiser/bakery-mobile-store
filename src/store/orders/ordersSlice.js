@@ -1,4 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { API_URL } from "../../constants/firebase";
 
 const initialState = {
   orders: [],
@@ -7,7 +8,7 @@ const initialState = {
 
 export const getOrders = createAsyncThunk("orders/getOrders", async () => {
   try {
-    const response = await fetch(`${URL_API}ordenes.json`, {
+    const response = await fetch(`${API_URL}orders.json`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -41,4 +42,4 @@ export const ordersSlice = createSlice({
   },
 });
 
-export default productsSlice.reducer;
+export default ordersSlice.reducer;
