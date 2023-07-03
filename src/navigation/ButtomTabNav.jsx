@@ -8,7 +8,6 @@ import { useState, useEffect } from "react";
 
 import ShopNavigator from "./shop";
 import CartNavigator from "./cart";
-import FavoritesNavigator from "./favorites";
 import ProfileNavigator from "./profile";
 
 import { useAppSelector } from "../hooks/store";
@@ -71,23 +70,6 @@ const ButtomTabNavigator = () => {
             backgroundColor: THEME.colors.tertiary,
             color: THEME.colors.secondary,
           },
-        }}
-      />
-      <ButtomTab.Screen
-        name="FavoritesStack"
-        component={FavoritesNavigator}
-        options={{
-          headerShown: false,
-          tabBarShowLabel: false,
-          tabBarIcon: ({ focused }) => (
-            <View>
-              <Ionicons
-                name={focused ? "md-heart-sharp" : "md-heart-outline"}
-                size={24}
-                color={THEME.colors.tertiary}
-              />
-            </View>
-          ),
         }}
       />
       <ButtomTab.Screen

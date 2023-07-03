@@ -10,8 +10,7 @@ const AppNavigatior = () => {
 
   return (
     <NavigationContainer>
-      {/* ACA DEJE NEGADO EL USERID PARA NO TENTER QUE LOGUEARME CADA VEZ QUE ACTUALIZO LA STORE */}
-      {!userId ? <ButtomTabNavigator /> : <AuthNavigator />}
+      {userId ? <ButtomTabNavigator /> : <AuthNavigator />}
     </NavigationContainer>
   );
 };

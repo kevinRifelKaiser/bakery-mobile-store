@@ -17,7 +17,6 @@ const ProductDetail = ({ route }) => {
 
   const { title } = route.params;
   const [itemCount, setItemCount] = useState(1);
-  const [isFav, setIsFav] = useState(false);
 
   const sumCartItem = (amount) => {
     setItemCount((currentCount) => {
@@ -28,10 +27,6 @@ const ProductDetail = ({ route }) => {
   const addItemToCart = () => {
     onHandleAddItem({ productData, itemCount });
     setItemCount(1);
-  };
-
-  const onHandleFav = () => {
-    setIsFav(!isFav);
   };
 
   return (
@@ -66,15 +61,6 @@ const ProductDetail = ({ route }) => {
             style={styles.addToCartButton}
             onPress={addItemToCart}>
             <Text style={styles.addToCartText}>Add to cart</Text>
-          </TouchableOpacity>
-        </View>
-        <View style={styles.favButContainer}>
-          <TouchableOpacity style={styles.favBut} onPress={onHandleFav}>
-            <Ionicons
-              name={isFav ? "heart" : "heart-outline"}
-              size={40}
-              color={isFav ? THEME.colors.fav : THEME.colors.black}
-            />
           </TouchableOpacity>
         </View>
       </View>

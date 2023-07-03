@@ -41,6 +41,7 @@ const CardNumber = (props) => {
       ) : (
         <View style={styles.editContainer}>
           <TextInput
+            keyboardType="numeric"
             style={styles.input}
             onChangeText={(text) => setpickedCard(text)}
             value={pickedCard}
