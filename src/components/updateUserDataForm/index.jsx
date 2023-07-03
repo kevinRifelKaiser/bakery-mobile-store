@@ -15,10 +15,6 @@ const ProfileDataForm = ({ updateDataModal, handleUpdateDataModal }) => {
   const { picture, name, lat, lng, cardNumber } = useAppSelector(
     (state) => state.userData
   );
-  const locationImage =
-    lat &&
-    lng &&
-    `https://maps.googleapis.com/maps/api/staticmap?center=${lat},${lng}&zoom=13&size=600x300&maptype=roadmap&markers=color:blue%7Clabel:S%7C${lat},${lng}&key=${GOOGLE_MAPS_API_KEY}`;
 
   const [userImg, setUserImg] = useState();
   const [userName, setUserName] = useState();
@@ -51,7 +47,7 @@ const ProfileDataForm = ({ updateDataModal, handleUpdateDataModal }) => {
           <View style={styles.separeteView}></View>
           <ShippingLocation
             pickAdress={setUserAddress}
-            locationImage={locationImage}
+            locationImage={{ lat, lng }}
           />
           <View style={styles.separeteView}></View>
           <CardNumber pickCardNumber={setUserCard} cardNumber={cardNumber} />

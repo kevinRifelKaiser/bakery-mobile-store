@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, Button, Image } from "react-native";
+import { View, Text, Button, Image } from "react-native";
 import { useState } from "react";
 import * as Location from "expo-location";
 
