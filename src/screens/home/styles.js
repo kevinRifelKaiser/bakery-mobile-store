@@ -2,25 +2,30 @@ import { StyleSheet } from "react-native";
 import { THEME } from "../../constants/theme";
 
 export const styles = StyleSheet.create({
-  container: {
+  bgImage: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+  },
+  container: {
+    flex: 1,
+    justifyContent: "center",
     backgroundColor: THEME.colors.background,
   },
   title: {
-    fontSize: 70,
+    fontSize: 72,
     marginVertical: 20,
     width: "80%",
     fontFamily: "Title-Font",
     color: THEME.colors.secondary,
   },
   subTitle: {
-    fontSize: 18,
+    fontSize: 25,
     width: "80%",
     color: THEME.colors.secondary,
     marginVertical: 20,
     fontFamily: "Body-Font",
+    fontWeight: "bold",
   },
   buttonContainer: {
     width: "80%",
@@ -42,7 +47,7 @@ export const styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: 20,
-    color: THEME.colors.black,
+    color: THEME.colors.tertiary,
     fontFamily: "Body-Font",
   },
 });

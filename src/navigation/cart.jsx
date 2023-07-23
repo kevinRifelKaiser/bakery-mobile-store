@@ -12,6 +12,7 @@ const CartNavigator = () => {
         name="Cart"
         component={Cart}
         options={{
+          headerTintColor: THEME.colors.tertiary,
           headerTitleAlign: "center",
           headerStyle: {
             backgroundColor: THEME.colors.primary,
@@ -23,6 +24,7 @@ const CartNavigator = () => {
         name="Checkout"
         component={CheckOut}
         options={{
+          headerTintColor: THEME.colors.tertiary,
           title: "Check out",
           headerTitleAlign: "center",
           headerStyle: {

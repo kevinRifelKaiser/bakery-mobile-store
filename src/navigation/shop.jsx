@@ -19,6 +19,7 @@ const ShopNavigator = () => {
         name="Products"
         component={Products}
         options={{
+          headerTintColor: THEME.colors.tertiary,
           headerTitleAlign: "center",
           headerStyle: {
             backgroundColor: THEME.colors.primary,
@@ -35,6 +36,7 @@ const ShopNavigator = () => {
         name="ProductDetail"
         component={ProductDetail}
         options={{
+          headerTintColor: THEME.colors.tertiary,
           headerTitleAlign: "center",
           title: "Detail",
           headerStyle: {

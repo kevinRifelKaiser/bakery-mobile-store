@@ -12,6 +12,7 @@ const ProfileNavigator = () => {
         name="Profile"
         component={Profile}
         options={{
+          headerTintColor: THEME.colors.tertiary,
           title: "My profile",
           headerTitleAlign: "center",
           headerStyle: {
@@ -24,6 +25,7 @@ const ProfileNavigator = () => {
         name="Orders"
         component={Orders}
         options={{
+          headerTintColor: THEME.colors.tertiary,
           title: "Order history",
           headerTitleAlign: "center",
           headerStyle: {
