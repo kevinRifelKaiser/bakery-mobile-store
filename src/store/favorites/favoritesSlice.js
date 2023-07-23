@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { API_URL } from "../../constants/firebase";
 
 const initialState = {
   items: [],
@@ -8,8 +7,9 @@ const initialState = {
 export const addToFavorites = createAsyncThunk(
   "favorites/addToFavorites",
   async (item) => {
+    const firebaseApiUrl = process.env.API_URL;
     try {
-      const response = await fetch(`${API_URL}favorites.json`, {
+      const response = await fetch(`${firebaseApiUrl}favorites.json`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -31,10 +31,14 @@ export const addToFavorites = createAsyncThunk(
 export const removeFromFavorites = createAsyncThunk(
   "favorites/removeFromFavorites",
   async (itemId) => {
+    const firebaseApiUrl = process.env.API_URL;
     try {
-      const response = await fetch(`${API_URL}favorites/${itemId}.json`, {
-        method: "DELETE",
-      });
+      const response = await fetch(
+        `${firebaseApiUrl}favorites/${itemId}.json`,
+        {
+          method: "DELETE",
+        }
+      );
       const result = await response.json();
       console.log(result);
       return result;
@@ -48,8 +52,9 @@ export const removeFromFavorites = createAsyncThunk(
 export const getFavorites = createAsyncThunk(
   "favorites/getFavorites",
   async () => {
+    const firebaseApiUrl = process.env.API_URL;
     try {
-      const response = await fetch(`${API_URL}favorites.json`, {
+      const response = await fetch(`${firebaseApiUrl}favorites.json`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

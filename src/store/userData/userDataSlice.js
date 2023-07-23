@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import * as FileSystem from "expo-file-system";
-import { insertUserData, fetchUserData } from "../../database";
+import { insertUserData, fetchUserData } from "../../database/userDataDB";
 
 const initialState = {
   picture: null,

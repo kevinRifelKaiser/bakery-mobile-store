@@ -2,8 +2,6 @@ import { View, Text, Button, Image } from "react-native";
 import { useState } from "react";
 import * as Location from "expo-location";
 
-import { GOOGLE_MAPS_API_KEY } from "../../../constants/googleCloud";
-
 import { styles } from "./styles";
 import { THEME } from "../../../constants/theme";
 
@@ -11,6 +9,8 @@ const ShippingLocation = (props) => {
   const [pickedAddress, setPickedAddress] = useState(
     props.locationImage ? props.locationImage : false
   );
+
+  const googleMapsApiKey = process.env.GOOGLE_MAPS_API_KEY;
 
   const veryPermissions = async () => {
     const { status } = await Location.requestForegroundPermissionsAsync();
@@ -51,7 +51,7 @@ const ShippingLocation = (props) => {
             <Image
               style={styles.addressImg}
               source={{
-                uri: `https://maps.googleapis.com/maps/api/staticmap?center=${pickedAddress.lat},${pickedAddress.lng}&zoom=13&size=600x300&maptype=roadmap&markers=color:blue%7Clabel:S%7C${pickedAddress.lat},${pickedAddress.lng}&key=${GOOGLE_MAPS_API_KEY}`,
+                uri: `https://maps.googleapis.com/maps/api/staticmap?center=${pickedAddress.lat},${pickedAddress.lng}&zoom=13&size=600x300&maptype=roadmap&markers=color:blue%7Clabel:S%7C${pickedAddress.lat},${pickedAddress.lng}&key=${googleMapsApiKey}`,
               }}
             />
           </View>

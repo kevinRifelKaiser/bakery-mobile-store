@@ -3,14 +3,22 @@ import { ActivityIndicator } from "react-native";
 import AppNavigatior from "./src/navigation";
 import { store } from "./src/store";
 import { Provider } from "react-redux";
-import { init } from "./src/database";
+import { initUserData } from "./src/database/userDataDB";
+import { initSignInToken } from "./src/database/signInTokenDB";
 
 import { THEME } from "./src/constants/theme";
 
-init()
-  .then(() => console.log("Base de datos iniciada"))
+initUserData()
+  .then(() => console.log("User data base started"))
   .catch((err) => {
-    console.log("Base de datos no creada");
+    console.log("User data base not created");
+    console.log(err.message);
+  });
+
+initSignInToken()
+  .then(() => console.log("User ID data base started"))
+  .catch((err) => {
+    console.log("User ID data base not created");
     console.log(err.message);
   });
 

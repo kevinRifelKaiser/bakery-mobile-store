@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { API_URL } from "../../constants/firebase";
 import { sumTotal } from "../../utils";
 
 const initialState = {
@@ -11,8 +10,9 @@ export const confirmCart = createAsyncThunk(
   "cart/confirmCart",
   async (items) => {
     const total = sumTotal(items);
+    const firebaseApiUrl = process.env.API_URL;
     try {
-      const response = await fetch(`${API_URL}orders.json`, {
+      const response = await fetch(`${firebaseApiUrl}orders.json`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

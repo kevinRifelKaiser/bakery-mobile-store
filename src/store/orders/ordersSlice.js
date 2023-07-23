@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { API_URL } from "../../constants/firebase";
 
 const initialState = {
   orders: [],
@@ -7,8 +6,9 @@ const initialState = {
 };
 
 export const getOrders = createAsyncThunk("orders/getOrders", async () => {
+  const firebaseApiUrl = process.env.API_URL;
   try {
-    const response = await fetch(`${API_URL}orders.json`, {
+    const response = await fetch(`${firebaseApiUrl}orders.json`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

@@ -1,12 +1,12 @@
 import * as SQLite from "expo-sqlite";
 
-const db = SQLite.openDatabase("userData2.db");
+const db = SQLite.openDatabase("signInToken.db");
 
-export const init = () => {
+export const initSignInToken = () => {
   const promise = new Promise((resolve, reject) => {
     db.transaction((tx) => {
       tx.executeSql(
-        "create table if not exists userData2 (id integer primary key autoincrement, picture text not null, name text not null, lat real not null, lng real not null, cardNumber integer not null);",
+        "create table if not exists signInToken (id integer primary key autoincrement, userIdCreated text not null);",
         [],
         () => {
           resolve();
@@ -20,12 +20,12 @@ export const init = () => {
   return promise;
 };
 
-export const insertUserData = (picture, name, lat, lng, cardNumber) => {
+export const addUserIdToDB = (userIdCreated) => {
   const promise = new Promise((resolve, reject) => {
     db.transaction((tx) => {
       tx.executeSql(
-        "insert into userData2 (picture, name, lat, lng, cardNumber) VALUES (?, ?, ?, ?, ?);",
-        [picture, name, lat, lng, cardNumber],
+        "insert into signInToken (userIdCreated) VALUES (?);",
+        [userIdCreated],
         (_, result) => resolve(result),
         (_, err) => reject(err)
       );
@@ -34,11 +34,11 @@ export const insertUserData = (picture, name, lat, lng, cardNumber) => {
   return promise;
 };
 
-export const fetchUserData = () => {
+export const fetchUserId = () => {
   const promise = new Promise((resolve, reject) => {
     db.transaction((tx) => {
       tx.executeSql(
-        "SELECT * FROM userData2",
+        "SELECT * FROM signInToken",
         [],
         (_, result) => resolve(result),
         (_, err) => reject(err)

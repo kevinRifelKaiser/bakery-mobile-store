@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { URL_AUTH_SIGNUP, URL_AUTH_LOGIN } from "../../constants/firebase";
 
 const initialState = {
   token: null,
@@ -8,10 +7,11 @@ const initialState = {
 
 export const signUp = createAsyncThunk("auth/signUp", async (userData) => {
   const { email, password } = userData;
+  const signinApiKey = process.env.URL_AUTH_SIGNUP;
   console.log(email, password);
 
   try {
-    const response = await fetch(URL_AUTH_SIGNUP, {
+    const response = await fetch(signinApiKey, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -38,10 +38,11 @@ export const signUp = createAsyncThunk("auth/signUp", async (userData) => {
 
 export const logIn = createAsyncThunk("auth/logIn", async (userData) => {
   const { email, password } = userData;
+  const loginApiKey = process.env.URL_AUTH_LOGIN;
   console.log(email, password);
 
   try {
-    const response = await fetch(URL_AUTH_LOGIN, {
+    const response = await fetch(loginApiKey, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

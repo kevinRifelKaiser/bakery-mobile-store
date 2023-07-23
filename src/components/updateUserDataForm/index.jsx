@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 
 import { useAppSelector } from "../../hooks/store";
 import useUserDataActions from "../../hooks/useUserDataActions";
-import { GOOGLE_MAPS_API_KEY } from "../../constants/googleCloud";
 
 import ProfileImage from "./profile-image";
 import ShippingLocation from "./shipping-location";
