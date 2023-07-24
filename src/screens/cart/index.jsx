@@ -1,4 +1,4 @@
-import { View, Text, FlatList, TouchableOpacity } from "react-native";
+import { View, Text, FlatList, TouchableOpacity, Alert } from "react-native";
 import { styles } from "./styles";
 
 import { CartItem } from "../../components";
@@ -12,6 +12,7 @@ const Cart = ({ navigation }) => {
   const { onHandleUpdateCart, onDeleteItem } = useCartActions();
 
   const { items } = useAppSelector((state) => state.cart);
+  const userData = useAppSelector((state) => state.userData);
 
   const totalAmount = sumTotal(items);
 
@@ -26,7 +27,13 @@ const Cart = ({ navigation }) => {
   const keyExtractor = (item) => item.id;
 
   const checkOutOrder = () => {
-    navigation.navigate("Checkout");
+    userData.cardNumber
+      ? navigation.navigate("Checkout")
+      : Alert.alert(
+          "You are just one step far from geting your food",
+          "Before buying you have to charge your personal information in the profile section",
+          [{ text: "Got it", style: "cancel" }]
+        );
   };
 
   const Header = () => {
