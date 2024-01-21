@@ -1,6 +1,6 @@
 import { View, Text, Modal, ScrollView, TouchableOpacity } from "react-native";
 import { styles } from "./style";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import { useAppSelector } from "../../hooks/store";
 import useUserDataActions from "../../hooks/useUserDataActions";

@@ -10,7 +10,7 @@ const AppNavigatior = () => {
 
   return (
     <NavigationContainer>
-      {userId ? <ButtomTabNavigator /> : <AuthNavigator />}
+      {!userId ? <ButtomTabNavigator /> : <AuthNavigator />}
     </NavigationContainer>
   );
 };
